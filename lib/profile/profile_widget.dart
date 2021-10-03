@@ -279,7 +279,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                       }
                                       final textUsersRecord = snapshot.data;
                                       return Text(
-                                        '[display_name]',
+                                        textUsersRecord.displayName,
                                         textAlign: TextAlign.center,
                                         style: FlutterFlowTheme.title1.override(
                                           fontFamily: 'Poppins',
