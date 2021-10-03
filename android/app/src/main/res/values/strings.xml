@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    <string name="app_name">Agape online dating</string>
+    <string name="facebook_app_id">1024343278404190</string>
+               <string name="fb_login_protocol_scheme">fb1024343278404190</string>
+</resources>

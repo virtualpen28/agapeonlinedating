@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1023299123202",
+    "project_id": "agape-dating-app",
+    "storage_bucket": "agape-dating-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1023299123202:android:836df1d6858bc5d3ec4f1b",
+        "android_client_info": {
+          "package_name": "com.flutterflow.agapeonlinedating"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1023299123202-onggrfb35p2rf9ju30kkftc2gt77oadm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.flutterflow.agapeonlinedating",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "1023299123202-egfreesgk7m2p4holiuahe0ueft1ooma.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrYl3cpPZD3cXEIr9onI1fwp2G5HGmTuM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1023299123202-egfreesgk7m2p4holiuahe0ueft1ooma.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1023299123202-rhvvc63q77t31vlnmmj1ivlj3cc5el3p.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.flutterflow.agapeonlinedating",
+                "app_store_id": "082728"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
