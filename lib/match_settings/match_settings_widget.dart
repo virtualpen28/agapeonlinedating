@@ -21,9 +21,10 @@ class MatchSettingsWidget extends StatefulWidget {
 class _MatchSettingsWidgetState extends State<MatchSettingsWidget>
     with TickerProviderStateMixin {
   PageController pageViewController;
-  String dropDownValue;
+  String dropDownValue1;
   double sliderValue1;
   double sliderValue2;
+  String dropDownValue2;
   String radioButtonValue;
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final animationsMap = {
@@ -323,25 +324,67 @@ class _MatchSettingsWidgetState extends State<MatchSettingsWidget>
                                   child: Container(
                                     width: MediaQuery.of(context).size.width,
                                     height: MediaQuery.of(context).size.height *
-                                        0.04,
+                                        0.06,
                                     decoration: BoxDecoration(
                                       color: Colors.white,
                                     ),
-                                    child: Align(
-                                      alignment:
-                                          AlignmentDirectional(-0.92, 0.2),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            16, 0, 0, 0),
-                                        child: Text(
-                                          'Distance of {City, State}',
-                                          textAlign: TextAlign.start,
-                                          style:
-                                              FlutterFlowTheme.title3.override(
-                                            fontFamily: 'Poppins',
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Align(
+                                          alignment:
+                                              AlignmentDirectional(-0.92, 0.2),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    20, 0, 0, 0),
+                                            child: Text(
+                                              'Distance of ',
+                                              textAlign: TextAlign.start,
+                                              style: FlutterFlowTheme.title3
+                                                  .override(
+                                                fontFamily: 'Poppins',
+                                              ),
+                                            ),
                                           ),
                                         ),
-                                      ),
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(0, 4.5, 4, 7),
+                                              child: FlutterFlowDropDown(
+                                                initialOption:
+                                                    dropDownValue1 ??=
+                                                        'City. State',
+                                                options:
+                                                    ['New York, NY'].toList(),
+                                                onChanged: (val) => setState(
+                                                    () => dropDownValue1 = val),
+                                                width: 200,
+                                                height: 32.5,
+                                                textStyle: FlutterFlowTheme
+                                                    .bodyText1
+                                                    .override(
+                                                  fontFamily: 'Poppins',
+                                                  color: Color(0xFF303030),
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                                fillColor: Colors.white,
+                                                elevation: 2,
+                                                borderColor: Colors.transparent,
+                                                borderWidth: 0,
+                                                borderRadius: 0,
+                                                margin: EdgeInsetsDirectional
+                                                    .fromSTEB(8, 4, 8, 4),
+                                                hidesUnderline: true,
+                                              ),
+                                            )
+                                          ],
+                                        )
+                                      ],
                                     ),
                                   ),
                                 ),
@@ -432,7 +475,7 @@ class _MatchSettingsWidgetState extends State<MatchSettingsWidget>
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 30, 130, 0),
                                   child: FlutterFlowDropDown(
-                                    initialOption: dropDownValue ??=
+                                    initialOption: dropDownValue2 ??=
                                         'Denomination',
                                     options: [
                                       'Denomination',
@@ -442,7 +485,7 @@ class _MatchSettingsWidgetState extends State<MatchSettingsWidget>
                                       'Non-denominational'
                                     ].toList(),
                                     onChanged: (val) =>
-                                        setState(() => dropDownValue = val),
+                                        setState(() => dropDownValue2 = val),
                                     width: 200,
                                     height: 40,
                                     textStyle:
