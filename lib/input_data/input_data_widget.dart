@@ -27,118 +27,153 @@ class _InputDataWidgetState extends State<InputDataWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: Color(0xFFF5F5F5),
-      body: SafeArea(
-        child: Stack(
-          children: [
-            Align(
-              alignment: AlignmentDirectional(0, -0.78),
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  FlutterFlowIconButton(
-                    borderColor: Colors.transparent,
-                    borderRadius: 30,
-                    borderWidth: 1,
-                    buttonSize: 60,
-                    icon: Icon(
-                      Icons.add_box_outlined,
-                      color: Colors.black,
-                      size: 30,
-                    ),
-                    onPressed: () async {
-                      final userInterfaceCreateData =
-                          createUserInterfaceRecordData(
-                        age: textController.text,
-                      );
-                      final userInterfaceRecordReference =
-                          UserInterfaceRecord.collection.doc();
-                      await userInterfaceRecordReference
-                          .set(userInterfaceCreateData);
-                      Age = UserInterfaceRecord.getDocumentFromData(
-                          userInterfaceCreateData,
-                          userInterfaceRecordReference);
-
-                      setState(() {});
-                    },
-                  ),
-                  Expanded(
-                    child: StreamBuilder<List<UserInterfaceRecord>>(
-                      stream: queryUserInterfaceRecord(
-                        singleRecord: true,
-                      ),
-                      builder: (context, snapshot) {
-                        // Customize what your widget looks like when it's loading.
-                        if (!snapshot.hasData) {
-                          return Center(
-                            child: SizedBox(
-                              width: 50,
-                              height: 50,
-                              child: CircularProgressIndicator(
-                                color: Color(0xFF4B39EF),
-                              ),
-                            ),
-                          );
-                        }
-                        List<UserInterfaceRecord>
-                            textFieldUserInterfaceRecordList = snapshot.data;
-                        // Customize what your widget looks like with no query results.
-                        if (snapshot.data.isEmpty) {
-                          return Material(
-                            child: Container(
-                              height: 100,
-                              child: Center(
-                                child: Text('No results.'),
-                              ),
-                            ),
-                          );
-                        }
-                        final textFieldUserInterfaceRecord =
-                            textFieldUserInterfaceRecordList.first;
-                        return TextFormField(
-                          controller: textController,
-                          obscureText: false,
-                          decoration: InputDecoration(
-                            hintText: 'Enter Age',
-                            hintStyle: FlutterFlowTheme.bodyText1.override(
-                              fontFamily: 'Poppins',
-                            ),
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Color(0x00000000),
-                                width: 1,
-                              ),
-                              borderRadius: const BorderRadius.only(
-                                topLeft: Radius.circular(4.0),
-                                topRight: Radius.circular(4.0),
-                              ),
-                            ),
-                            focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Color(0x00000000),
-                                width: 1,
-                              ),
-                              borderRadius: const BorderRadius.only(
-                                topLeft: Radius.circular(4.0),
-                                topRight: Radius.circular(4.0),
-                              ),
-                            ),
-                          ),
-                          style: FlutterFlowTheme.bodyText1.override(
-                            fontFamily: 'Poppins',
-                          ),
-                        );
-                      },
-                    ),
-                  )
-                ],
-              ),
-            )
-          ],
-        ),
+    return StreamBuilder<List<UserInterfaceRecord>>(
+      stream: queryUserInterfaceRecord(
+        singleRecord: true,
       ),
+      builder: (context, snapshot) {
+        // Customize what your widget looks like when it's loading.
+        if (!snapshot.hasData) {
+          return Center(
+            child: SizedBox(
+              width: 50,
+              height: 50,
+              child: CircularProgressIndicator(
+                color: Color(0xFF4B39EF),
+              ),
+            ),
+          );
+        }
+        List<UserInterfaceRecord> inputDataUserInterfaceRecordList =
+            snapshot.data;
+        // Customize what your widget looks like with no query results.
+        if (snapshot.data.isEmpty) {
+          return Material(
+            child: Container(
+              height: 100,
+              child: Center(
+                child: Text('No results.'),
+              ),
+            ),
+          );
+        }
+        final inputDataUserInterfaceRecord =
+            inputDataUserInterfaceRecordList.first;
+        return Scaffold(
+          key: scaffoldKey,
+          backgroundColor: Color(0xFFF5F5F5),
+          body: SafeArea(
+            child: Stack(
+              children: [
+                Align(
+                  alignment: AlignmentDirectional(0, -0.78),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      FlutterFlowIconButton(
+                        borderColor: Colors.transparent,
+                        borderRadius: 30,
+                        borderWidth: 1,
+                        buttonSize: 60,
+                        icon: Icon(
+                          Icons.add_box_outlined,
+                          color: Colors.black,
+                          size: 30,
+                        ),
+                        onPressed: () async {
+                          final userInterfaceCreateData =
+                              createUserInterfaceRecordData(
+                            age: textController.text,
+                          );
+                          final userInterfaceRecordReference =
+                              UserInterfaceRecord.collection.doc();
+                          await userInterfaceRecordReference
+                              .set(userInterfaceCreateData);
+                          Age = UserInterfaceRecord.getDocumentFromData(
+                              userInterfaceCreateData,
+                              userInterfaceRecordReference);
+
+                          setState(() {});
+                        },
+                      ),
+                      Expanded(
+                        child: StreamBuilder<List<UserInterfaceRecord>>(
+                          stream: queryUserInterfaceRecord(
+                            singleRecord: true,
+                          ),
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 50,
+                                  height: 50,
+                                  child: CircularProgressIndicator(
+                                    color: Color(0xFF4B39EF),
+                                  ),
+                                ),
+                              );
+                            }
+                            List<UserInterfaceRecord>
+                                textFieldUserInterfaceRecordList =
+                                snapshot.data;
+                            // Customize what your widget looks like with no query results.
+                            if (snapshot.data.isEmpty) {
+                              return Material(
+                                child: Container(
+                                  height: 100,
+                                  child: Center(
+                                    child: Text('No results.'),
+                                  ),
+                                ),
+                              );
+                            }
+                            final textFieldUserInterfaceRecord =
+                                textFieldUserInterfaceRecordList.first;
+                            return TextFormField(
+                              controller: textController,
+                              obscureText: false,
+                              decoration: InputDecoration(
+                                hintText: 'Enter Age',
+                                hintStyle: FlutterFlowTheme.bodyText1.override(
+                                  fontFamily: 'Poppins',
+                                ),
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 1,
+                                  ),
+                                  borderRadius: const BorderRadius.only(
+                                    topLeft: Radius.circular(4.0),
+                                    topRight: Radius.circular(4.0),
+                                  ),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 1,
+                                  ),
+                                  borderRadius: const BorderRadius.only(
+                                    topLeft: Radius.circular(4.0),
+                                    topRight: Radius.circular(4.0),
+                                  ),
+                                ),
+                              ),
+                              style: FlutterFlowTheme.bodyText1.override(
+                                fontFamily: 'Poppins',
+                              ),
+                            );
+                          },
+                        ),
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }

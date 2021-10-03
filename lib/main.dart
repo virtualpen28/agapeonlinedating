@@ -9,6 +9,7 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import 'package:agape_online_dating/login_signup_screen/login_signup_screen_widget.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
+import 'input_data/input_data_widget.dart';
 import 'profile/profile_widget.dart';
 import 'matches/matches_widget.dart';
 import 'swiping_matches/swiping_matches_widget.dart';
@@ -95,6 +96,7 @@ class _NavBarPageState extends State<NavBarPage> {
   @override
   Widget build(BuildContext context) {
     final tabs = {
+      'InputData': InputDataWidget(),
       'Profile': ProfileWidget(),
       'Matches': MatchesWidget(),
       'SwipingMatches': SwipingMatchesWidget(),
@@ -104,6 +106,13 @@ class _NavBarPageState extends State<NavBarPage> {
       body: tabs[_currentPage],
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.home_outlined,
+              size: 24,
+            ),
+            label: 'Home',
+          ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.person_outline,
